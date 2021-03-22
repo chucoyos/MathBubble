@@ -12,7 +12,7 @@ import java.util.Random;
 
 public class Times2 extends AppCompatActivity {
 
-    Button topLeftButton, topRightButton, midLeftButton, midRightButton, bottomLeftButton, bottomRightButton;
+    Button button0, button1, button2, button3;
     TextView textView;
     int multiplying = 2;
     int rightAnswer;
@@ -25,32 +25,42 @@ public class Times2 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_times2);
 
-        buttons = new Button[]{topLeftButton, topRightButton,
-                midLeftButton, midRightButton,
-                bottomLeftButton, bottomRightButton};
-
-        topLeftButton = findViewById(R.id.topLeftButton);
-        topRightButton = findViewById(R.id.topRightButton);
-        bottomLeftButton = findViewById(R.id.bottomLeftButton);
-        bottomRightButton = findViewById(R.id.bottomRightButton);
+        button0 = findViewById(R.id.topLeftButton);
+        button1 = findViewById(R.id.topRightButton);
+        button2 = findViewById(R.id.bottomLeftButton);
+        button3 = findViewById(R.id.bottomRightButton);
         textView = findViewById(R.id.textView);
-        setAnswers();
+
+        buttons = new Button[]{button0, button1,
+                button2, button3};
     }
 
     @SuppressLint("DefaultLocale")
-    public void setAnswers(){
+    public void setAnswers(View view){
         Random random = new Random();
         int multiplier = random.nextInt(10) + 1;
         textView.setText(String.format( "%d X %d", multiplying, multiplier));
         rightAnswer = multiplying * multiplier;
 
         for (int i = 0; i < answers.length; i++){
-                answers[i] = (random.nextInt(10) + 1) * multiplying;
+            int wrongAnswer = (random.nextInt(10) + 1) * multiplying;
+            if (rightAnswer != wrongAnswer){
+                answers[i] = wrongAnswer;
+            }
 
         }
-         topLeftButton.setText(String.valueOf(rightAnswer));
-         topRightButton.setText(String.valueOf(answers[1]));
-         bottomLeftButton.setText(String.valueOf(answers[2]));
-         bottomRightButton.setText(String.valueOf(answers[3]));
+
+        for (int i = 0; i < buttons.length; i ++){
+            buttons[i].setText(String.valueOf(answers[i]));
         }
+
+         int rightAnswerLocation = random.nextInt(4);
+
+        buttons[rightAnswerLocation].setText(String.valueOf(rightAnswer));
+
+        /* TODO
+         ELIMINATE DUPLICATED ANSWERS
+         */
+
     }
+}

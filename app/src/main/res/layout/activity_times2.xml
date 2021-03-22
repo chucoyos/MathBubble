@@ -29,6 +29,8 @@
             android:orientation="horizontal">
 
             <Button
+                android:onClick="setAnswers"
+                android:tag="0"
                 android:textSize="24sp"
                 android:layout_margin="8dp"
                 android:id="@+id/topLeftButton"
@@ -38,6 +40,8 @@
                 android:text="Button" />
 
             <Button
+                android:onClick="setAnswers"
+                android:tag="1"
                 android:textSize="24sp"
                 android:layout_margin="8dp"
                 android:id="@+id/topRightButton"
@@ -48,11 +52,14 @@
         </LinearLayout>
 
         <LinearLayout
+            android:tag="2"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="horizontal">
 
             <Button
+                android:onClick="setAnswers"
+                android:tag="3"
                 android:textSize="24sp"
                 android:layout_margin="8dp"
                 android:id="@+id/bottomLeftButton"
@@ -62,6 +69,7 @@
                 android:text="Button" />
 
             <Button
+                android:onClick="setAnswers"
                 android:textSize="24sp"
                 android:layout_margin="8dp"
                 android:id="@+id/bottomRightButton"
