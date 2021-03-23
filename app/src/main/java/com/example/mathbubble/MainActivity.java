@@ -16,6 +16,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void times2(View view){
         Intent intent = new Intent(this, Times2.class);
+        intent.putExtra("multiplying", "2");
         startActivity(intent);
     }
 }

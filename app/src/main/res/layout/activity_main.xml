@@ -12,7 +12,7 @@
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="198dp">>
+        tools:layout_editor_absoluteX="198dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -21,7 +21,7 @@
 
             <Button
                 android:layout_margin="8dp"
-                android:onClick="times1"
+                android:onClick="times2"
                 android:id="@+id/Times1Button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -39,7 +39,7 @@
 
             <Button
                 android:layout_margin="8dp"
-                android:onClick="times3"
+                android:onClick="times2"
                 android:id="@+id/Times3button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
