@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -17,6 +18,7 @@ public class Times2 extends AppCompatActivity {
 
     //String mult = getIntent().getStringExtra("multiplying");
     int multiplying = 2;
+    int multiplier;
     int rightAnswer;
     int min = 1;
     int max = 11;
@@ -31,9 +33,9 @@ public class Times2 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_times2);
 
-        int multiplier = random.nextInt(max - min) + 1;
+        //multiplier = random.nextInt(max - min) + 1;
         //textView.setText(String.format( "%d X %d", multiplying, multiplier));
-        rightAnswer = multiplying * multiplier;
+        //rightAnswer = multiplying * multiplier;
 
         button0 = findViewById(R.id.topLeftButton);
         button1 = findViewById(R.id.topRightButton);
@@ -52,7 +54,7 @@ public class Times2 extends AppCompatActivity {
 
     @SuppressLint("DefaultLocale")
     public void setAnswers(View view){
-        int multiplier = random.nextInt(max - min) + 1;
+        multiplier = random.nextInt(max - min) + 1;
         textView.setText(String.format( "%d X %d", multiplying, multiplier));
         rightAnswer = multiplying * multiplier;
 
@@ -61,13 +63,15 @@ public class Times2 extends AppCompatActivity {
         printButtonValues();
 
         assignRightAnswer();
+        Log.i("multiplier", String.valueOf(multiplier));
+        Log.i("rightAnswer", String.valueOf(rightAnswer));
 
     } //END setAnswers
 
     @SuppressLint("DefaultLocale")
     public void assignWrongAnswers(){
         int multiplier = random.nextInt(max - min) + 1;
-        textView.setText(String.format( "%d X %d", multiplying, multiplier));
+        //textView.setText(String.format( "%d X %d", multiplying, multiplier));
         for (int i = 0; i < answers.length; i++){
             int wrongAnswer = (random.nextInt(max -min) + 1) * multiplying;
             if (wrongAnswer != rightAnswer){
@@ -98,4 +102,4 @@ public class Times2 extends AppCompatActivity {
     }
 }
 
-/* TODO FIX assignRightAnswer(); not printing values */
+/* TODO FIX assignRightAnswer(); printing some duplicated buttons(sometimes) and extraString null reference */
