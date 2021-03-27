@@ -54,7 +54,7 @@ public class Times2 extends AppCompatActivity {
 
     @SuppressLint("DefaultLocale")
     public void setMultipliers(View view){
-        multiplier = random.nextInt(max - min) + 1;
+        multiplier = random.nextInt(max - min) + min;
         textView.setText(String.format( "%d X %d", multiplying, multiplier));
         rightAnswer = multiplying * multiplier;
 
@@ -93,9 +93,9 @@ public class Times2 extends AppCompatActivity {
 
     public void generateMultipliers(){
         for (int i = 0; i < multipliers.length; i ++){
-            int multiplier = random.nextInt((max - min) +1) * multiplying;;
+            int multiplier = (random.nextInt(10) + 1) * multiplying;
             while (multiplier == rightAnswer ){
-                multiplier = random.nextInt((max - min) +1) * multiplying;
+                multiplier = (random.nextInt(10) + 1) * multiplying;
             }
             multipliers[i] = multiplier;
         }
