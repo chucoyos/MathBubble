@@ -24,7 +24,7 @@ public class Times2 extends AppCompatActivity {
     int max = 11;
     Random random = new Random();
 
-    int [] answers = new int[4];
+    int [] multipliers = new int[4];
     Button [] buttons;
 
     @SuppressLint("DefaultLocale")
@@ -53,14 +53,14 @@ public class Times2 extends AppCompatActivity {
 
 
     @SuppressLint("DefaultLocale")
-    public void setAnswers(View view){
+    public void setMultipliers(View view){
         multiplier = random.nextInt(max - min) + 1;
         textView.setText(String.format( "%d X %d", multiplying, multiplier));
         rightAnswer = multiplying * multiplier;
 
         //assignWrongAnswers();
 
-        generateAnswersValues();
+        generateMultipliers();
 
         printButtonValues();
 
@@ -73,35 +73,35 @@ public class Times2 extends AppCompatActivity {
     @SuppressLint("DefaultLocale")
     public void assignWrongAnswers(){
         int multiplier = random.nextInt(max - min) + 1;
-        for (int i = 0; i < answers.length; i++){
+        for (int i = 0; i < multipliers.length; i++){
             int wrongAnswer = (random.nextInt(max - min) + 1) * multiplying;
             if (wrongAnswer != rightAnswer){
-                answers[i] = wrongAnswer;
+                multipliers[i] = wrongAnswer;
             }
         }
 
-        if ((answers[0] == answers[1])
-                || (answers[2] == answers[1])
-                || (answers[0] == answers[2])
-                || (answers[3] == answers[2])
-                || (answers[3] == answers[1])
-                || (answers[0] == answers[3])){
+        if ((multipliers[0] == multipliers[1])
+                || (multipliers[2] == multipliers[1])
+                || (multipliers[0] == multipliers[2])
+                || (multipliers[3] == multipliers[2])
+                || (multipliers[3] == multipliers[1])
+                || (multipliers[0] == multipliers[3])){
             assignWrongAnswers();
         }
 
     } //END assignWrongAnswers()
 
-    public void generateAnswersValues(){
-        for (int i = 0; i < answers.length; i ++){
-            int answer = random.nextInt((max - min) +1) * multiplying;
-            answers[i] = answer;
+    public void generateMultipliers(){
+        for (int i = 0; i < multipliers.length; i ++){
+            int multiplier = random.nextInt((max - min) +1) * multiplying;
+            multipliers[i] = multiplier;
         }
     }
 
     public void printButtonValues(){
-        for (int i = 0; i < answers.length; i ++){
-            buttons[i].setText(String.valueOf(answers[i]));
-            Log.i("Answers", String.valueOf(answers[i]));
+        for (int i = 0; i < multipliers.length; i ++){
+            buttons[i].setText(String.valueOf(multipliers[i]));
+            Log.i("Answers", String.valueOf(multipliers[i]));
         }
     }
 
