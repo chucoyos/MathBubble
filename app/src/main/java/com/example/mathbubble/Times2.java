@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -16,12 +15,10 @@ public class Times2 extends AppCompatActivity {
     Button button0, button1, button2, button3;
     TextView textView;
 
-    //String mult = getIntent().getStringExtra("multiplying");
     int multiplying = 2;
     int multiplier;
     int rightAnswer;
-    int min = 1;
-    int max = 11;
+
     Random random = new Random();
 
     int [] multipliers = new int[4];
@@ -33,9 +30,6 @@ public class Times2 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_times2);
 
-        //multiplier = random.nextInt(max - min) + 1;
-        //textView.setText(String.format( "%d X %d", multiplying, multiplier));
-        //rightAnswer = multiplying * multiplier;
 
         button0 = findViewById(R.id.topLeftButton);
         button1 = findViewById(R.id.topRightButton);
@@ -66,31 +60,9 @@ public class Times2 extends AppCompatActivity {
         printButtonValues();
 
         assignRightAnswer();
-        Log.i("multiplier", String.valueOf(multiplier));
-        Log.i("rightAnswer", String.valueOf(rightAnswer));
 
     } //END setAnswers
 
-    @SuppressLint("DefaultLocale")
-    public void assignWrongAnswers(){
-        int multiplier = random.nextInt(max - min) + 1;
-        for (int i = 0; i < multipliers.length; i++){
-            int wrongAnswer = (random.nextInt(max - min) + 1) * multiplying;
-            if (wrongAnswer != rightAnswer){
-                multipliers[i] = wrongAnswer;
-            }
-        }
-
-        if ((multipliers[0] == multipliers[1])
-                || (multipliers[2] == multipliers[1])
-                || (multipliers[0] == multipliers[2])
-                || (multipliers[3] == multipliers[2])
-                || (multipliers[3] == multipliers[1])
-                || (multipliers[0] == multipliers[3])){
-            assignWrongAnswers();
-        }
-
-    } //END assignWrongAnswers()
 
     public void generateMultipliers(){
         for (int i = 0; i < multipliers.length; i ++){
@@ -100,12 +72,20 @@ public class Times2 extends AppCompatActivity {
             }
             multipliers[i] = multiplier;
         }
+
+        if ((multipliers[0] == multipliers[1])
+                || (multipliers[2] == multipliers[1])
+                || (multipliers[0] == multipliers[2])
+                || (multipliers[3] == multipliers[2])
+                || (multipliers[3] == multipliers[1])
+                || (multipliers[0] == multipliers[3])){
+            generateMultipliers();
+        }
     }
 
     public void printButtonValues(){
         for (int i = 0; i < multipliers.length; i ++){
             buttons[i].setText(String.valueOf(multipliers[i]));
-            Log.i("Answers", String.valueOf(multipliers[i]));
         }
     }
 
@@ -115,4 +95,4 @@ public class Times2 extends AppCompatActivity {
     }
 }
 
-/* TODO FIX assignWrongAmswers() is printing duplicated values, assignRightAnswer(); printing some duplicated buttons(sometimes) and extraString null reference */
+/* TODO  */
