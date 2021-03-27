@@ -45,6 +45,10 @@ public class Times2 extends AppCompatActivity {
 
         buttons = new Button[]{button0, button1,
                 button2, button3};
+        multiplier = (random.nextInt(10) + 1);
+        textView.setText(String.format( "%d X %d", multiplying, multiplier));
+        rightAnswer = multiplying * multiplier;
+
         generateMultipliers();
         printButtonValues();
         assignRightAnswer();
