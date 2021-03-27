@@ -58,11 +58,13 @@ public class Times2 extends AppCompatActivity {
         textView.setText(String.format( "%d X %d", multiplying, multiplier));
         rightAnswer = multiplying * multiplier;
 
-        assignWrongAnswers();
+        //assignWrongAnswers();
+
+        generateAnswersValues();
 
         printButtonValues();
 
-        assignRightAnswer();
+        //assignRightAnswer();
         Log.i("multiplier", String.valueOf(multiplier));
         Log.i("rightAnswer", String.valueOf(rightAnswer));
 
@@ -71,9 +73,8 @@ public class Times2 extends AppCompatActivity {
     @SuppressLint("DefaultLocale")
     public void assignWrongAnswers(){
         int multiplier = random.nextInt(max - min) + 1;
-        //textView.setText(String.format( "%d X %d", multiplying, multiplier));
         for (int i = 0; i < answers.length; i++){
-            int wrongAnswer = (random.nextInt(max -min) + 1) * multiplying;
+            int wrongAnswer = (random.nextInt(max - min) + 1) * multiplying;
             if (wrongAnswer != rightAnswer){
                 answers[i] = wrongAnswer;
             }
@@ -90,16 +91,24 @@ public class Times2 extends AppCompatActivity {
 
     } //END assignWrongAnswers()
 
+    public void generateAnswersValues(){
+        for (int i = 0; i < answers.length; i ++){
+            int answer = random.nextInt((max - min) +1) * multiplying;
+            answers[i] = answer;
+        }
+    }
+
     public void printButtonValues(){
         for (int i = 0; i < answers.length; i ++){
             buttons[i].setText(String.valueOf(answers[i]));
+            Log.i("Answers", String.valueOf(answers[i]));
         }
     }
 
     public void assignRightAnswer(){
         int rightAnswerLocation = random.nextInt(4);
-        buttons[rightAnswerLocation].setText(String.valueOf(rightAnswer));
+        //buttons[0].setText(String.valueOf(rightAnswer));
     }
 }
 
-/* TODO FIX assignRightAnswer(); printing some duplicated buttons(sometimes) and extraString null reference */
+/* TODO FIX assignWrongAmswers() is printing duplicated values, assignRightAnswer(); printing some duplicated buttons(sometimes) and extraString null reference */
