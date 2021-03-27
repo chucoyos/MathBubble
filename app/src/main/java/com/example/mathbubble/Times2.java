@@ -93,7 +93,10 @@ public class Times2 extends AppCompatActivity {
 
     public void generateMultipliers(){
         for (int i = 0; i < multipliers.length; i ++){
-            int multiplier = random.nextInt((max - min) +1) * multiplying;
+            int multiplier = random.nextInt((max - min) +1) * multiplying;;
+            while (multiplier == rightAnswer ){
+                multiplier = random.nextInt((max - min) +1) * multiplying;
+            }
             multipliers[i] = multiplier;
         }
     }
