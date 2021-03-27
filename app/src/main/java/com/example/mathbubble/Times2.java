@@ -45,8 +45,7 @@ public class Times2 extends AppCompatActivity {
 
         buttons = new Button[]{button0, button1,
                 button2, button3};
-
-        assignWrongAnswers();
+        generateMultipliers();
         printButtonValues();
         assignRightAnswer();
     } //END onCreate
@@ -54,17 +53,15 @@ public class Times2 extends AppCompatActivity {
 
     @SuppressLint("DefaultLocale")
     public void setMultipliers(View view){
-        multiplier = random.nextInt(max - min) + min;
+        multiplier = (random.nextInt(10) + 1);
         textView.setText(String.format( "%d X %d", multiplying, multiplier));
         rightAnswer = multiplying * multiplier;
-
-        //assignWrongAnswers();
 
         generateMultipliers();
 
         printButtonValues();
 
-        //assignRightAnswer();
+        assignRightAnswer();
         Log.i("multiplier", String.valueOf(multiplier));
         Log.i("rightAnswer", String.valueOf(rightAnswer));
 
@@ -110,7 +107,7 @@ public class Times2 extends AppCompatActivity {
 
     public void assignRightAnswer(){
         int rightAnswerLocation = random.nextInt(4);
-        //buttons[0].setText(String.valueOf(rightAnswer));
+        buttons[rightAnswerLocation].setText(String.valueOf(rightAnswer));
     }
 }
 
